@@ -1,0 +1,33 @@
+Sazepad Industrial Template — third-party assets
+
+1) Fonts
+   Vazirmatn — © 2015-2024 The Vazirmatn Project Authors
+   License: SIL Open Font License 1.1
+   Source: https://github.com/rastikerdar/vazirmatn
+   Files: assets/fonts/vazirmatn-regular.woff2, assets/fonts/vazirmatn-bold.woff2
+   Redistribution of the font files is allowed under the OFL.
+
+2) Photography
+   Source: Pexels (https://www.pexels.com), Pexels License:
+   free for commercial use, no attribution required, modification allowed.
+   The following Pexels photo IDs were used, resized and re-encoded to AVIF/WebP:
+
+   34629416, 32845694, 33369528, 34190679, 34190681, 34207364, 34254278,
+   34629416, 34718926, 36700973, 3818947, 5504388, 5505125, 6285151,
+   8960987, 8961008, 8961006, 10039994, 10064817, 10697106, 18078304, 28261139
+
+   Files: assets/images/*.avif, assets/images/*.webp, assets/images/og-image.jpg
+
+3) Brand mark, favicon and icons
+   Original work created for this template. Inline SVG icons are drawn for this project
+   and are covered by the template license.
+
+4) Development tooling (not part of the browser output)
+   Tailwind CSS (MIT), esbuild (MIT), Vite (MIT), Prettier (MIT), Stylelint (MIT),
+   ESLint (MIT), sharp (Apache-2.0), concurrently (MIT).
+   These are development dependencies only and are not shipped to end users.
+
+5) Client logos on the home page
+   Placeholder wordmarks drawn for this template. They are not real companies.
+
+No code, text or imagery from other commercial templates is included.

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="سازه‌پاد صنعت">
+  <rect width="48" height="48" fill="#1b2023" />
+  <path d="M9 27 24 12l15 15" fill="none" stroke="#e4805a" stroke-width="3.5" stroke-linecap="square" />
+  <path d="M15 27v11M24 27v11M33 27v11" stroke="#f6f2ec" stroke-width="2.5" />
+</svg>
