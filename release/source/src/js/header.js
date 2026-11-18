@@ -1,3 +1,5 @@
+import { prefersReducedMotion } from './utils.js';
+
 export const initHeader = () => {
   const header = document.querySelector('[data-site-header]');
   const sentinel = document.querySelector('[data-header-sentinel]');
@@ -16,19 +18,32 @@ export const initHeader = () => {
 
   if (!dialog) return;
 
+  const closeDelay = prefersReducedMotion() ? 0 : 240;
+
+  const closeMenu = () => {
+    dialog.classList.add('is-closing');
+    window.setTimeout(() => {
+      dialog.close();
+      dialog.classList.remove('is-closing');
+    }, closeDelay);
+  };
+
   openers.forEach((opener) => {
-    opener.addEventListener('click', () => dialog.showModal());
+    opener.addEventListener('click', () => {
+      dialog.classList.remove('is-closing');
+      dialog.showModal();
+    });
   });
 
   closers.forEach((closer) => {
-    closer.addEventListener('click', () => dialog.close());
+    closer.addEventListener('click', closeMenu);
   });
 
   dialog.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => dialog.close());
+    link.addEventListener('click', closeMenu);
   });
 
   dialog.addEventListener('click', (event) => {
-    if (event.target === dialog) dialog.close();
+    if (event.target === dialog) closeMenu();
   });
 };
