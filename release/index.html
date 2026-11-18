@@ -389,37 +389,89 @@
     </dialog>
 
     <main id="main">
-      <section class="hero relative z-20">
+      <section class="hero relative z-20" data-hero aria-label="تصاویر منتخب پروژه‌ها">
         <div class="hero__media">
-          <picture>
-            <source
-              type="image/avif"
-              srcset="
-                assets/images/hero-industrial-960.avif   960w,
-                assets/images/hero-industrial-1920.avif 1920w
-              "
-              sizes="100vw"
-            />
-            <img
-              src="assets/images/hero-industrial-960.webp"
-              srcset="
-                assets/images/hero-industrial-960.webp   960w,
-                assets/images/hero-industrial-1920.webp 1920w
-              "
-              sizes="100vw"
-              width="1920"
-              height="1080"
-              fetchpriority="high"
-              decoding="async"
-              alt="کارگاه ساخت اسکلت یک ساختمان صناعی با جرثقیل برجی"
-            />
-          </picture>
+          <div class="hero__slide is-active" data-hero-slide>
+            <picture>
+              <source
+                type="image/avif"
+                srcset="
+                  assets/images/hero-industrial-960.avif   960w,
+                  assets/images/hero-industrial-1920.avif 1920w
+                "
+                sizes="100vw"
+              />
+              <img
+                src="assets/images/hero-industrial-960.webp"
+                srcset="
+                  assets/images/hero-industrial-960.webp   960w,
+                  assets/images/hero-industrial-1920.webp 1920w
+                "
+                sizes="100vw"
+                width="1920"
+                height="1080"
+                fetchpriority="high"
+                decoding="async"
+                alt="کارگاه ساخت اسکلت یک ساختمان صناعی با جرثقیل برجی"
+              />
+            </picture>
+          </div>
+          <div class="hero__slide" data-hero-slide aria-hidden="true">
+            <picture>
+              <source
+                type="image/avif"
+                srcset="
+                  assets/images/hero-slide-2-960.avif   960w,
+                  assets/images/hero-slide-2-1920.avif 1920w
+                "
+                sizes="100vw"
+              />
+              <img
+                src="assets/images/hero-slide-2-960.webp"
+                srcset="
+                  assets/images/hero-slide-2-960.webp   960w,
+                  assets/images/hero-slide-2-1920.webp 1920w
+                "
+                sizes="100vw"
+                width="1920"
+                height="1080"
+                loading="lazy"
+                fetchpriority="low"
+                decoding="async"
+                alt="اجرای زیرساخت و محوطه‌سازی یک سایت صنعتی"
+              />
+            </picture>
+          </div>
+          <div class="hero__slide" data-hero-slide aria-hidden="true">
+            <picture>
+              <source
+                type="image/avif"
+                srcset="
+                  assets/images/hero-slide-3-960.avif   960w,
+                  assets/images/hero-slide-3-1920.avif 1920w
+                "
+                sizes="100vw"
+              />
+              <img
+                src="assets/images/hero-slide-3-960.webp"
+                srcset="
+                  assets/images/hero-slide-3-960.webp   960w,
+                  assets/images/hero-slide-3-1920.webp 1920w
+                "
+                sizes="100vw"
+                width="1920"
+                height="1080"
+                loading="lazy"
+                fetchpriority="low"
+                decoding="async"
+                alt="سالن تولید کارخانه با ماشین‌آلات نصب‌شده"
+              />
+            </picture>
+          </div>
         </div>
 
         <div class="container-x pt-12 sm:pt-16 lg:pt-24">
-          <div
-            class="max-w-[33rem] border border-line-dark bg-ink-950/95 p-6 sm:p-9 lg:mb-[-3.5rem]"
-          >
+          <div class="max-w-[33rem] border border-line-dark bg-ink-950/95 p-6 sm:p-9">
             <p class="eyebrow eyebrow--light">پیمانکار عمومی ساخت‌وساز صناعی</p>
             <h1 class="h-hero mt-4 text-paper">
               ساخت مستحکم
@@ -444,6 +496,50 @@
                 <path d="M19 12H5m6 6-6-6 6-6" />
               </svg>
             </a>
+          </div>
+
+          <div class="hero__controls">
+            <button type="button" class="hero__btn" data-hero-prev aria-label="تصویر قبلی">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14m-6-6 6 6-6 6" />
+              </svg>
+            </button>
+            <button type="button" class="hero__btn" data-hero-next aria-label="تصویر بعدی">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M19 12H5m6 6-6-6 6-6" />
+              </svg>
+            </button>
+            <div class="hero__dots">
+              <button type="button" data-hero-dot aria-current="true" aria-label="تصویر ۱"></button>
+              <button
+                type="button"
+                data-hero-dot
+                aria-current="false"
+                aria-label="تصویر ۲"
+              ></button>
+              <button
+                type="button"
+                data-hero-dot
+                aria-current="false"
+                aria-label="تصویر ۳"
+              ></button>
+            </div>
           </div>
         </div>
       </section>
@@ -594,6 +690,8 @@
                     alt="خط تولید و ماشین‌آلات در سالن یک کارخانه"
                   />
                 </picture>
+              </div>
+              <div class="svc-card__body">
                 <span class="svc-card__badge">
                   <svg
                     width="22"
@@ -608,8 +706,6 @@
                     <path d="M7 20v-3M13 20v-3M18 20v-3" />
                   </svg>
                 </span>
-              </div>
-              <div class="svc-card__body">
                 <h3 class="h-card">ساخت کارخانه و تأسیسات</h3>
                 <p class="mt-2 text-[0.9rem] leading-[1.9] text-muted">
                   اجرای سالن تولید، فونداسیون ماشین‌آلات و تأسیسات مکانیکی با هماهنگی کامل با فرآیند
@@ -657,6 +753,8 @@
                     alt="قفسه‌بندی و بارگیری در انبار صناعی"
                   />
                 </picture>
+              </div>
+              <div class="svc-card__body">
                 <span class="svc-card__badge">
                   <svg
                     width="22"
@@ -671,8 +769,6 @@
                     <path d="M3 9h18M8 9v11M16 9v11" />
                   </svg>
                 </span>
-              </div>
-              <div class="svc-card__body">
                 <h3 class="h-card">ساخت انبار و سردخانه</h3>
                 <p class="mt-2 text-[0.9rem] leading-[1.9] text-muted">
                   دهانه‌های وسیع، عایق‌کاری دقیق و کف‌سازی مقاوم برای بار سنگین و حرکت تجهیزات
@@ -720,6 +816,8 @@
                     alt="پایه بتنی و سازه در حال اجرای یک پروژه زیرساختی"
                   />
                 </picture>
+              </div>
+              <div class="svc-card__body">
                 <span class="svc-card__badge">
                   <svg
                     width="22"
@@ -733,8 +831,6 @@
                     <path d="M4 20V8h16v12M4 12h16M9 8V4M15 8V4" />
                   </svg>
                 </span>
-              </div>
-              <div class="svc-card__body">
                 <h3 class="h-card">ابنیه و زیرساخت</h3>
                 <p class="mt-2 text-[0.9rem] leading-[1.9] text-muted">
                   اجرای فونداسیون، دیوار حائل و سازه‌های بتنی و فلزی با کنترل کیفیت مصالح در محل

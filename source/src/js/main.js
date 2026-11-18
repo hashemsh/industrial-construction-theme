@@ -1,4 +1,5 @@
 import { initHeader } from './header.js';
+import { initHero } from './hero.js';
 import { initReveal } from './reveal.js';
 import { initCounters } from './counters.js';
 import { initSliders } from './slider.js';
@@ -8,6 +9,7 @@ import { initBackToTop } from './backtotop.js';
 
 const init = () => {
   initHeader();
+  initHero();
   initReveal();
   initCounters();
   initSliders();

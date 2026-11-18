@@ -9,6 +9,15 @@ const ICON_DIR = path.resolve('../release/assets/images');
 // Pexels photos, Pexels license: free for commercial use, no attribution required.
 const photos = [
   { id: 5505125, name: 'hero-industrial', ratio: 16 / 9, widths: [960, 1920], webpQuality: 46 },
+  { id: 18078304, name: 'hero-slide-2', ratio: 16 / 9, widths: [960, 1920], webpQuality: 46 },
+  {
+    id: 33369528,
+    name: 'hero-slide-3',
+    ratio: 16 / 9,
+    widths: [960, 1920],
+    avifQuality: 38,
+    webpQuality: 44,
+  },
   { id: 8961006, name: 'about-team', ratio: 4 / 5, widths: [520, 900] },
   { id: 33369528, name: 'service-plant', ratio: 4 / 3, widths: [560, 900] },
   { id: 10697106, name: 'service-warehouse', ratio: 4 / 3, widths: [560, 900] },
@@ -52,7 +61,7 @@ const generate = async (photo) => {
 
     await base
       .clone()
-      .avif({ quality: 52, effort: 5 })
+      .avif({ quality: photo.avifQuality ?? 52, effort: 5 })
       .toFile(path.join(OUT_DIR, `${photo.name}-${width}.avif`));
     await base
       .clone()
@@ -64,7 +73,7 @@ const generate = async (photo) => {
 const brandMark = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
   <rect width="48" height="48" fill="#1b2023"/>
-  <path d="M9 27 24 12l15 15" fill="none" stroke="#e4805a" stroke-width="3.5" stroke-linecap="square"/>
+  <path d="M9 27 24 12l15 15" fill="none" stroke="#2b6c88" stroke-width="3.5" stroke-linecap="square"/>
   <path d="M15 27v11M24 27v11M33 27v11" stroke="#f6f2ec" stroke-width="2.5"/>
 </svg>`;
 
