@@ -502,6 +502,8 @@ template. Read `PROJECT_SPEC.md` and `ROADMAP.md` before changing anything.
 - `release/` — the customer package. This is the site; edit HTML here.
 - `Idea/` — reference material (screenshot and the reference page source). Never copy code,
   text or imagery from it; it is only a structural reference.
+- `wordpress/` — local WordPress install (not versioned) plus the only tracked parts:
+  `wp-content/themes/sazehpood-hello-child/` and `kit/sazehpood-kit.json`.
 
 ## Commands (run inside `source/`)
 - `npm run dev` — Tailwind watch + esbuild watch + Vite on http://127.0.0.1:5173

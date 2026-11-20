@@ -41,6 +41,18 @@ screenshots/
 # Third-party reference material, never part of the deliverable
 Idea/
 
+# Local WordPress install — only the child theme and the kit are versioned
+wordpress/**
+!wordpress/README.md
+!wordpress/wp-content/
+wordpress/wp-content/*
+!wordpress/wp-content/themes/
+wordpress/wp-content/themes/*
+!wordpress/wp-content/themes/sazehpood-hello-child/
+!wordpress/wp-content/themes/sazehpood-hello-child/**
+!wordpress/kit/
+!wordpress/kit/**
+
 # Tooling state
 .freebuff/
 .cloud-attachments/
