@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="fa">
+  <title>وبلاگ سازه‌پاد صنعت</title>
+  <subtitle>یادداشت‌های فنی درباره‌ی ساخت‌وساز صناعی</subtitle>
+  <link href="https://example.com/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://example.com/pages/blog/index.html" rel="alternate" type="text/html" />
+  <id>https://example.com/</id>
+  <updated>2026-09-02T00:00:00Z</updated>
+  <author>
+    <name>سازه‌پاد صنعت</name>
+  </author>
+  <entry>
+    <title>چک‌لیست تحویل سالن تولید پیش از بهره‌برداری</title>
+    <link href="https://example.com/pages/blog/post-3.html" rel="alternate" type="text/html" />
+    <id>https://example.com/pages/blog/post-3.html</id>
+    <updated>2026-09-02T00:00:00Z</updated>
+    <summary>بررسی سازه، تأسیسات و مدارک پیش از راه‌اندازی خط تولید.</summary>
+  </entry>
+  <entry>
+    <title>ایمنی کارگاه در پروژه‌های صناعی</title>
+    <link href="https://example.com/pages/blog/post-2.html" rel="alternate" type="text/html" />
+    <id>https://example.com/pages/blog/post-2.html</id>
+    <updated>2026-07-03T00:00:00Z</updated>
+    <summary>چک‌لیست ایمنی، آموزش دوره‌ای و نقش گزارش بازرسی در کاهش حادثه.</summary>
+  </entry>
+  <entry>
+    <title>چگونه هزینه‌ی ساخت سالن تولید را کاهش دهیم؟</title>
+    <link href="https://example.com/pages/blog/post-1.html" rel="alternate" type="text/html" />
+    <id>https://example.com/pages/blog/post-1.html</id>
+    <updated>2026-06-12T00:00:00Z</updated>
+    <summary>سه تصمیم کلیدی که هزینه‌ی ساخت سالن تولید را تعیین می‌کنند: دهانه، چیدمان و فازبندی.</summary>
+  </entry>
+</feed>

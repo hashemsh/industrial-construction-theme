@@ -18,14 +18,26 @@ index.html
 pages/
   about-us.html
   services.html
+  service-factory.html
+  service-warehouse.html
+  service-civil.html
   service-detail.html
   projects.html
+  projects-page-2.html
   project-detail.html
+  faq.html
+  certifications.html
+  privacy-policy.html
+  terms.html
+  thanks.html
   contact-us.html
   blog/
     index.html
+    page-2.html
     post-1.html
     post-2.html
+    post-3.html
+    author.html
     category-industrial.html
     category-safety.html
 assets/
@@ -37,11 +49,17 @@ source/          # ابزار بیلد (فقط اگر بخواهید ظاهر ر
 docs/
 robots.txt
 sitemap.xml
+feed.xml
 LICENSES.txt
 CHANGELOG.md
 ```
 
 همه‌ی مسیرها نسبی هستند؛ قالب از هر پوشه‌ای و حتی با `file://` کار می‌کند.
+
+صفحه‌های فرعی: سه صفحه‌ی خدمت مستقل (`service-factory`، `service-warehouse`، `service-civil`)،
+فهرست پرسش‌های متداول، مدارک و استانداردها، حریم خصوصی، قوانین و مقررات، صفحه‌ی تشکر
+(`noindex`)، آرشیو پروژه‌ها در صفحه‌ی دوم، صفحه‌ی دوم وبلاگ و صفحه‌ی نویسنده. `feed.xml`
+فید Atom وبلاگ است و در متای صفحات وبلاگ پیوند دارد.
 
 ## مستندات
 
