@@ -24,6 +24,19 @@
   --radius-ui: 0.5rem;
   --radius-card: 0.85rem;
   --container-page: 78rem;
+  --text-micro: 0.62rem;
+  --text-mini: 0.72rem;
+  --text-small: 0.75rem;
+  --text-note: 0.82rem;
+  --text-body: 0.88rem;
+  --text-body-lg: 0.95rem;
+  --text-lead: 1rem;
+  --text-title: 1.05rem;
+  --leading-caption: 1.7;
+  --leading-ui: 1.8;
+  --leading-body: 1.9;
+  --leading-prose: 1.95;
+  --leading-reading: 2;
 }
 
 @font-face {
@@ -154,7 +167,6 @@
   .h-hero {
     font-size: clamp(1.8rem, 3.1vw, 2.85rem);
     line-height: 1.25;
-    letter-spacing: -0.01em;
   }
 
   .h-section {
@@ -551,17 +563,42 @@
   }
 
   .hero__dots button {
+    display: grid;
+    place-items: center;
     width: 1.75rem;
-    height: 3px;
+    height: 1.75rem;
     padding: 0;
     border: 0;
-    background-color: rgb(246 242 236 / 0.35);
+    background-color: transparent;
     cursor: pointer;
+  }
+
+  .hero__dots button::before {
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: rgb(246 242 236 / 0.35);
     transition: background-color 0.18s ease;
   }
 
-  .hero__dots button[aria-current='true'] {
+  .hero__dots button:hover::before {
+    background-color: rgb(246 242 236 / 0.7);
+  }
+
+  .hero__dots button[aria-current='true']::before {
     background-color: var(--color-brand-300);
+  }
+
+  .hero__pause [data-play-icon] {
+    display: none;
+  }
+
+  .hero__pause[aria-pressed='true'] [data-pause-icon] {
+    display: none;
+  }
+
+  .hero__pause[aria-pressed='true'] [data-play-icon] {
+    display: block;
   }
 
   .hero__media::after {
@@ -573,34 +610,170 @@
       linear-gradient(to top, rgb(18 22 24 / 0.85), rgb(18 22 24 / 0.05) 62%);
   }
 
-  /* Client strip */
-  .client-strip {
+  .hero__panel {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1px;
-    background-color: var(--color-line);
-    border: 1px solid var(--color-line);
-    border-radius: var(--radius-card);
-    overflow: hidden;
+    gap: 2rem;
+    max-width: 54rem;
+    margin-inline: auto;
+    padding: 1.5rem;
+    border: 1px solid var(--color-line-dark);
+    background-color: rgb(18 22 24 / 0.92);
   }
 
-  .client-strip > li {
-    display: grid;
-    place-items: center;
-    padding: 1.6rem 1rem;
-    background-color: #fff;
-    color: var(--color-ink-600);
-  }
-
-  @media (width >= 48rem) {
-    .client-strip {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+  @media (width >= 40rem) {
+    .hero__panel {
+      padding: 2.25rem;
     }
   }
 
   @media (width >= 64rem) {
-    .client-strip {
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+    .hero__panel {
+      grid-template-columns: minmax(0, 1fr) 12.5rem;
+      align-items: start;
+      gap: 2.5rem;
+      padding: 2.5rem;
+    }
+  }
+
+  .hero__aside {
+    display: flex;
+    flex-direction: column;
+    padding-block-start: 1.5rem;
+    border-block-start: 1px solid var(--color-line-dark);
+  }
+
+  @media (width >= 64rem) {
+    .hero__aside {
+      padding-block-start: 0.35rem;
+      padding-inline-start: 2rem;
+      border-block-start: 0;
+      border-inline-start: 1px solid var(--color-line-dark);
+    }
+  }
+
+  .hero__aside-title {
+    margin-block-end: 0.5rem;
+    font-size: var(--text-mini);
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--color-brand-300);
+  }
+
+  .hero__aside a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-block: 0.6rem;
+    font-size: var(--text-body);
+    color: rgb(246 242 236 / 0.78);
+    transition: color 0.18s ease;
+  }
+
+  .hero__aside a + a {
+    border-block-start: 1px solid rgb(58 68 72 / 0.6);
+  }
+
+  .hero__aside a:hover {
+    color: var(--color-paper);
+  }
+
+  .hero__aside svg {
+    flex: none;
+    opacity: 0.6;
+    transition:
+      transform 0.18s ease,
+      opacity 0.18s ease;
+  }
+
+  .hero__aside a:hover svg {
+    transform: translateX(-0.2rem);
+    opacity: 1;
+  }
+
+  /* Client strip */
+  .client-strip {
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    border-block: 1px solid var(--color-line);
+  }
+
+  .client-strip::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, #fff, rgb(255 255 255 / 0) 4rem),
+      linear-gradient(to left, #fff, rgb(255 255 255 / 0) 4rem);
+    background-repeat: no-repeat;
+    background-size:
+      4rem 100%,
+      4rem 100%;
+    background-position:
+      left center,
+      right center;
+  }
+
+  .client-strip__track {
+    display: flex;
+    width: max-content;
+    direction: ltr;
+    animation: client-marquee 45s linear infinite;
+  }
+
+  .client-strip:hover .client-strip__track {
+    animation-play-state: paused;
+  }
+
+  @keyframes client-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .client-strip__group {
+    display: flex;
+  }
+
+  .client-strip__group > li {
+    display: grid;
+    place-items: center;
+    min-width: 14rem;
+    padding: 1.5rem 1.75rem;
+    direction: rtl;
+    color: var(--color-ink-600);
+    border-inline-end: 1px solid var(--color-line);
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .client-strip__group > li:hover {
+    color: var(--color-ink-900);
+    background-color: var(--color-paper);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .client-strip__track {
+      width: auto;
+      animation: none;
+    }
+
+    .client-strip__group {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .client-strip__group[aria-hidden='true'] {
+      display: none;
+    }
+
+    .client-strip__group > li {
+      min-width: 11rem;
+      border-inline-end: 0;
     }
   }
 
@@ -704,6 +877,11 @@
       box-shadow 0.3s ease;
   }
 
+  .proj-card picture {
+    display: block;
+    height: 100%;
+  }
+
   .proj-card img {
     width: 100%;
     height: 100%;
@@ -805,9 +983,9 @@
     display: none;
   }
 
-  .plans:has(#plan-small:checked) .plan-panel[data-plan='small'],
-  .plans:has(#plan-medium:checked) .plan-panel[data-plan='medium'],
-  .plans:has(#plan-large:checked) .plan-panel[data-plan='large'] {
+  .plans:has([data-plan-input='small']:checked) .plan-panel[data-plan='small'],
+  .plans:has([data-plan-input='medium']:checked) .plan-panel[data-plan='medium'],
+  .plans:has([data-plan-input='large']:checked) .plan-panel[data-plan='large'] {
     display: block;
   }
 

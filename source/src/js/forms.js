@@ -1,3 +1,16 @@
+let errorIdCounter = 0;
+
+// Link each visible error message to its control so screen readers announce it.
+const linkError = (field, control) => {
+  const error = field.querySelector('[data-error]');
+  if (!error || !control) return;
+  if (!error.id) {
+    errorIdCounter += 1;
+    error.id = `${control.id || `field-${errorIdCounter}`}-error`;
+  }
+  control.setAttribute('aria-describedby', error.id);
+};
+
 const setError = (field, message) => {
   field.classList.toggle('is-invalid', Boolean(message));
   const error = field.querySelector('[data-error]');
@@ -69,6 +82,7 @@ export const initForms = () => {
 
     form.querySelectorAll('.field').forEach((field) => {
       const control = field.querySelector('input, textarea, select');
+      linkError(field, control);
       control?.addEventListener('blur', () => validateField(field));
     });
   });

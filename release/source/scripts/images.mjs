@@ -15,19 +15,21 @@ const photos = [
     name: 'hero-slide-3',
     ratio: 16 / 9,
     widths: [960, 1920],
+    // Dense grain makes this photo expensive at 1920 in WebP; the fallback caps at 1280 to stay under the hero budget.
+    webpWidths: [960, 1280],
     avifQuality: 38,
-    webpQuality: 44,
+    webpQuality: 46,
   },
   { id: 8961006, name: 'about-team', ratio: 4 / 5, widths: [520, 900] },
-  { id: 33369528, name: 'service-plant', ratio: 4 / 3, widths: [560, 900] },
+  { id: 33369528, name: 'service-plant', ratio: 4 / 3, widths: [560, 900], webpQuality: 40 },
   { id: 10697106, name: 'service-warehouse', ratio: 4 / 3, widths: [560, 900] },
   { id: 18078304, name: 'service-infrastructure', ratio: 4 / 3, widths: [560, 900] },
   { id: 5504388, name: 'project-crane', ratio: 4 / 5, widths: [480, 760] },
   { id: 36700973, name: 'project-city', ratio: 4 / 5, widths: [480, 760] },
-  { id: 3818947, name: 'project-steel', ratio: 4 / 5, widths: [480, 760] },
+  { id: 3818947, name: 'project-steel', ratio: 4 / 5, widths: [480, 760], webpQuality: 50 },
   { id: 34254278, name: 'project-facade', ratio: 4 / 5, widths: [480, 760] },
   { id: 34718926, name: 'project-plant', ratio: 4 / 5, widths: [480, 760] },
-  { id: 34190679, name: 'project-coastal', ratio: 4 / 5, widths: [480, 760] },
+  { id: 34190679, name: 'project-coastal', ratio: 4 / 5, widths: [480, 760], webpQuality: 60 },
   { id: 34629416, name: 'video-poster', ratio: 16 / 9, widths: [960, 1600] },
   { id: 8960987, name: 'team-one', ratio: 1 / 1.12, widths: [420, 640] },
   { id: 32845694, name: 'team-two', ratio: 1 / 1.12, widths: [420, 640] },
@@ -55,16 +57,22 @@ const download = async (photo) => {
 
 const generate = async (photo) => {
   const file = await download(photo);
-  for (const width of photo.widths) {
-    const height = Math.round(width / photo.ratio);
-    const base = sharp(file).resize({ width, height, fit: 'cover', position: 'centre' });
+  const resize = (width) =>
+    sharp(file).resize({
+      width,
+      height: Math.round(width / photo.ratio),
+      fit: 'cover',
+      position: 'centre',
+    });
 
-    await base
-      .clone()
+  for (const width of photo.widths) {
+    await resize(width)
       .avif({ quality: photo.avifQuality ?? 52, effort: 5 })
       .toFile(path.join(OUT_DIR, `${photo.name}-${width}.avif`));
-    await base
-      .clone()
+  }
+
+  for (const width of photo.webpWidths ?? photo.widths) {
+    await resize(width)
       .webp({ quality: photo.webpQuality ?? 68, effort: 5 })
       .toFile(path.join(OUT_DIR, `${photo.name}-${width}.webp`));
   }

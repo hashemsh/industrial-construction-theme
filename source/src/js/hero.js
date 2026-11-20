@@ -12,8 +12,10 @@ export const initHero = () => {
 
   if (slides.length < 2) return;
 
+  const pauseBtn = root.querySelector('[data-hero-pause]');
   let index = 0;
   let timer = 0;
+  let paused = false;
 
   const show = (next) => {
     index = (next + slides.length) % slides.length;
@@ -36,8 +38,18 @@ export const initHero = () => {
 
   const start = () => {
     stop();
-    if (prefersReducedMotion()) return;
+    if (paused || prefersReducedMotion()) return;
     timer = window.setInterval(() => show(index + 1), AUTOPLAY_DELAY);
+  };
+
+  const setPaused = (value) => {
+    paused = value;
+    if (pauseBtn) {
+      pauseBtn.setAttribute('aria-pressed', String(paused));
+      pauseBtn.setAttribute('aria-label', paused ? 'ادامه پخش خودکار' : 'توقف پخش خودکار');
+    }
+    if (paused) stop();
+    else start();
   };
 
   root.querySelector('[data-hero-next]')?.addEventListener('click', () => {
@@ -56,6 +68,9 @@ export const initHero = () => {
       start();
     });
   });
+
+  if (pauseBtn && prefersReducedMotion()) pauseBtn.hidden = true;
+  pauseBtn?.addEventListener('click', () => setPaused(!paused));
 
   root.addEventListener('mouseenter', stop);
   root.addEventListener('mouseleave', start);
